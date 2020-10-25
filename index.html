@@ -2,6 +2,23 @@
   <head>
     <title>Cyanide Truck Games: Home of The Adventure: New Eden</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script>
+      function Validate() {
+        var checkbox = document.getElementById("checkbox")
+
+        if (checkbox.checked == true) {
+          DownloadTANE();
+        }
+        else {
+          alert("You have not accepted our Terms and Conditions")
+        }
+      }
+
+      function DownloadTANE() {
+        location.href = "https://www.cyanidetruckgames.tk/ta_ne_installer_alpha_v1.21.exe"
+      }
+    </script>
   </head>
   <body class="font">
     <h1><u>Welcome to the Official Cyanide Truck Games Site</u></h1>
@@ -9,7 +26,10 @@
     <h4><b><U>The Adventure: New Eden Alpha V1.21</U></b></h4>
     <h5>TA: NE is a free-to-play RPG set in a desert in a mysterious, lush garden...</h5>
     <h4><i>Full Release Coming Soon...</i></h4>
-    <a href="ta_ne_installer_alpha_v1.21.exe"><button class="btn"><i class="fa fa-download"></i> Download Demo</button></a>
+    <input type="checkbox" id="checkbox"> By clicking this you accept our Terms and Conditions
+    <br>
+    <br>
+    <button class="btn" onclick="Validate();"><i class="fa fa-download"></i> Download Demo</button>
   </body>
   <style>
     .font {
