@@ -8,4 +8,4 @@ Cyanide Truck Games is a Game Dev Team founded by Sean Costello in 2020 and code
 Yes! You can get all Cyanide Truck Games' products from here and here only!
 
 # Downloads
-<a id="raw-url" href="https://raw.githubusercontent.com/Cyanide-Truck-Games/Cyanide-Truck-Games/master/ta_ne_launcher.zip">Download TA: NE Demo</a>
+<a id="raw-url" href="https://raw.githubusercontent.com/Cyanide-Truck-Games/Cyanide-Truck-Games/main/ta_ne_launcher.zip">Download TA: NE Demo</a>
