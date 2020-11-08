@@ -2,7 +2,7 @@
     font-family: sans-serif;
     background-color: blue;
     color: white;
-  }
+}
 
   .btn {
     background-color: DodgerBlue;
@@ -11,11 +11,11 @@
     padding: 12px 30px;
     cursor: pointer;
     font-size: 20px;
-  }
+}
 
   .btn:hover {
     background-color: RoyalBlue;
-  }
+}
 
   .toolbutton {
     background-color: yellow;
@@ -24,16 +24,16 @@
     padding: 12px 30px;
     cursor: pointer;
     font-size: 20px;
-  }
+}
 
   .toolbutton:hover {
     background-color: yellowgreen;
-  }
+}
 
   .img {
     width: 600px;
     height: 300px;
-  }
+}
 
   .toolbar {
     background-color: yellow;
