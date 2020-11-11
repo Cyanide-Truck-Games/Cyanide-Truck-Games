@@ -2,7 +2,7 @@ var scene, camera, renderer, mesh;
 var meshFloor, ambientLight, light;
 
 var keyboard = {};
-var player = { height:1.8, speed:0.2, turnSpeed:Math.PI*0.02 };
+var player = { height:1.8, speed:0.2, turnSpeed:Math.PI*0.02};
 
 var USE_WIREFRAME = true;
 
@@ -119,7 +119,15 @@ function animate(){
 	}
 	if(keyboard[39]){
 		camera.rotation.y += player.turnSpeed;
-    }
+	}
+	
+	if(keyboard[32]){
+		camera.position.y += player.speed;
+	}
+
+	if(keyboard[16]){
+		camera.position.y -= player.speed;
+	}
 	
 	renderer.render(scene, camera);
 }
