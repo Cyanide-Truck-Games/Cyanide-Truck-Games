@@ -2,14 +2,17 @@ var scene, camera, renderer, mesh;
 var meshFloor, ambientLight, light;
 
 var keyboard = {};
-var player = { height:1.8, speed:0.2, turnSpeed:Math.PI*0.02};
+var player = {height:1.8, speed:0.2};
+
+renderer = new THREE.WebGLRenderer();
+camera = new THREE.PerspectiveCamera(90, 1280/720, 0.1, 1000);
+scene = new THREE.Scene();
+
+let controls = new THREE.PointerLockControls(camera, renderer.domElement);
 
 var USE_WIREFRAME = true;
 
 function init(){
-	scene = new THREE.Scene();
-	camera = new THREE.PerspectiveCamera(90, 1280/720, 0.1, 1000);
-	
 	mesh = new THREE.Mesh(
 		new THREE.BoxGeometry(1,1,1),
 		new THREE.MeshPhongMaterial({color:0xff4444, wireframe:USE_WIREFRAME})
@@ -95,35 +98,34 @@ function init(){
 	scene.add(ambientLight);
 	
 	light = new THREE.PointLight(0xffffff, 0.8, 18);
-	light.position.set(0,6,0);
+	light.position.set(0, 6, 0);
 	light.castShadow = true;
 	light.shadow.camera.near = 0.1;
 	light.shadow.camera.far = 25;
 	scene.add(light);
 
 	light2 = new THREE.PointLight(0xffffff, 0.8, 18);
-	light2.position.set(-20,6,40);
+	light2.position.set(-20, 6, 40);
 	light2.castShadow = true;
 	light2.shadow.camera.near = 0.1;
 	light2.shadow.camera.far = 25;
 	scene.add(light2);
 
 	light3 = new THREE.PointLight(0xffffff, 0.8, 18);
-	light3.position.set(30,6,50);
+	light3.position.set(30, 6, 50);
 	light3.castShadow = true;
 	light3.shadow.camera.near = 0.1;
 	light3.shadow.camera.far = 25;
 	scene.add(light3);
 	
 	camera.position.set(0, player.height, -5);
-	camera.lookAt(new THREE.Vector3(0,player.height,0));
+	camera.lookAt(new THREE.Vector3(0, player.height, 0));
 	
-	renderer = new THREE.WebGLRenderer();
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	
 	renderer.shadowMap.enabled = true;
 	renderer.shadowMap.type = THREE.BasicShadowMap;
-	
+
 	document.body.appendChild(renderer.domElement);
 	
 	animate();
@@ -131,6 +133,8 @@ function init(){
 
 function animate(){
 	requestAnimationFrame(animate);
+
+	controls.lock()
 	
 	mesh.rotation.x += 0.01;
     mesh.rotation.y += 0.02;
@@ -142,42 +146,24 @@ function animate(){
 	mesh3.rotation.y += 0.02;
 
 	if(keyboard[87]){
-		camera.position.x -= Math.sin(camera.rotation.y) * player.speed;
-		camera.position.z -= -Math.cos(camera.rotation.y) * player.speed;
+		controls.moveForward(0.2)
 	}
 	if(keyboard[83]){
-		camera.position.x += Math.sin(camera.rotation.y) * player.speed;
-		camera.position.z += -Math.cos(camera.rotation.y) * player.speed;
+		controls.moveForward(-0.2)
 	}
 	if(keyboard[65]){
-		camera.position.x += Math.sin(camera.rotation.y + Math.PI/2) * player.speed;
-		camera.position.z += -Math.cos(camera.rotation.y + Math.PI/2) * player.speed;
+		controls.moveRight(-0.2)
 	}
 	if(keyboard[68]){
-		camera.position.x += Math.sin(camera.rotation.y - Math.PI/2) * player.speed;
-		camera.position.z += -Math.cos(camera.rotation.y - Math.PI/2) * player.speed;
+		controls.moveRight(0.2)
 	}
-	
-	if(keyboard[37]){
-		camera.rotation.y -= player.turnSpeed;
-	}
-	if(keyboard[39]){
-		camera.rotation.y += player.turnSpeed;
-	}
-	
+
 	if(keyboard[32]){
 		camera.position.y += player.speed;
 	}
 
 	if(keyboard[16]){
 		camera.position.y -= player.speed;
-	}
-	
-	if(keyboard[67]){
-		player.speed = 0.6;
-	}
-	else {
-		player.speed = 0.2;
 	}
 
 	renderer.render(scene, camera);
