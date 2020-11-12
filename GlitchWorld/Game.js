@@ -61,7 +61,35 @@ function init(){
     sphereMesh2.receiveShadow = true;
     sphereMesh2.castShadow = true;
     sphereMesh2.position.set(30, 1, 50)
-    scene.add(sphereMesh2)
+	scene.add(sphereMesh2)
+	
+	mesh3 = new THREE.Mesh(
+		new THREE.BoxGeometry(1, 1, 1),
+		new THREE.MeshPhongMaterial({color:0xff4444, wireframe:USE_WIREFRAME})
+	)
+	mesh3.position.y += 1;
+    mesh3.position.set(-20, 1, 40)
+	mesh3.receiveShadow = true;
+	mesh3.castShadow = true;
+	scene.add(mesh3);
+	
+	meshFloor3 = new THREE.Mesh(
+        new THREE.PlaneGeometry(10, 10, 10, 10),
+        new THREE.MeshPhongMaterial({color:0xffffff, wireframe:USE_WIREFRAME})
+    )
+    meshFloor3.rotation.x -= Math.PI / 2;
+    meshFloor3.position.set(-20, 0, 40)
+	meshFloor3.receiveShadow = true;
+	scene.add(meshFloor3);
+	
+	sphereMesh3 = new THREE.Mesh(
+        new THREE.SphereGeometry(10, 10, 10, 10),
+        new THREE.MeshPhongMaterial({color:0xffffff, wireframe:USE_WIREFRAME})
+    )
+    sphereMesh3.receiveShadow = true;
+    sphereMesh3.castShadow = true;
+    sphereMesh3.position.set(-20, 1, 40)
+	scene.add(sphereMesh3)
 	
 	ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
 	scene.add(ambientLight);
@@ -71,8 +99,7 @@ function init(){
 	light.castShadow = true;
 	light.shadow.camera.near = 0.1;
 	light.shadow.camera.far = 25;
-	scene.add(light);
-	
+	scene.add(light);	
 	
 	camera.position.set(0, player.height, -5);
 	camera.lookAt(new THREE.Vector3(0,player.height,0));
@@ -97,6 +124,9 @@ function animate(){
     mesh2.rotation.x += 0.01;
 	mesh2.rotation.y += 0.02;
 	
+	mesh3.rotation.x += 0.01;
+	mesh3.rotation.y += 0.02;
+
 	if(keyboard[87]){
 		camera.position.x -= Math.sin(camera.rotation.y) * player.speed;
 		camera.position.z -= -Math.cos(camera.rotation.y) * player.speed;
