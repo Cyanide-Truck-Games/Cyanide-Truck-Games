@@ -95,11 +95,25 @@ function init(){
 	scene.add(ambientLight);
 	
 	light = new THREE.PointLight(0xffffff, 0.8, 18);
-	light.position.set(-3,6,-3);
+	light.position.set(0,6,0);
 	light.castShadow = true;
 	light.shadow.camera.near = 0.1;
 	light.shadow.camera.far = 25;
-	scene.add(light);	
+	scene.add(light);
+
+	light2 = new THREE.PointLight(0xffffff, 0.8, 18);
+	light2.position.set(-20,6,40);
+	light2.castShadow = true;
+	light2.shadow.camera.near = 0.1;
+	light2.shadow.camera.far = 25;
+	scene.add(light2);
+
+	light3 = new THREE.PointLight(0xffffff, 0.8, 18);
+	light3.position.set(30,6,50);
+	light3.castShadow = true;
+	light3.shadow.camera.near = 0.1;
+	light3.shadow.camera.far = 25;
+	scene.add(light3);
 	
 	camera.position.set(0, player.height, -5);
 	camera.lookAt(new THREE.Vector3(0,player.height,0));
@@ -159,6 +173,13 @@ function animate(){
 		camera.position.y -= player.speed;
 	}
 	
+	if(keyboard[67]){
+		player.speed = 0.6;
+	}
+	else {
+		player.speed = 0.2;
+	}
+
 	renderer.render(scene, camera);
 }
 
