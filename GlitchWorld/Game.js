@@ -146,16 +146,16 @@ function animate(){
 	mesh3.rotation.y += 0.02;
 
 	if(keyboard[87]){
-		controls.moveForward(0.2)
+		controls.moveForward(player.speed)
 	}
 	if(keyboard[83]){
-		controls.moveForward(-0.2)
+		controls.moveForward(-player.speed)
 	}
 	if(keyboard[65]){
-		controls.moveRight(-0.2)
+		controls.moveRight(-player.speed)
 	}
 	if(keyboard[68]){
-		controls.moveRight(0.2)
+		controls.moveRight(player.speed)
 	}
 
 	if(keyboard[32]){
@@ -164,6 +164,13 @@ function animate(){
 
 	if(keyboard[16]){
 		camera.position.y -= player.speed;
+	}
+
+	if(keyboard[67]){
+		player.speed = 0.5;
+	}
+	else {
+		player.speed = 0.2;
 	}
 
 	renderer.render(scene, camera);
