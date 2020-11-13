@@ -5,10 +5,33 @@ var keyboard = {};
 var player = {height:1.8, speed:0.2};
 
 renderer = new THREE.WebGLRenderer();
-camera = new THREE.PerspectiveCamera(90, 1280/720, 0.1, 1000);
+camera = new THREE.PerspectiveCamera(90, 1280/720, 1, 100);
 scene = new THREE.Scene();
 
+var composer = new THREE.EffectComposer(renderer);
+
+var renderPass = new THREE.RenderPass(scene, camera)
+composer.addPass(renderPass)
+renderPass.renderToScreen = true;
+
+const bloomparams = {
+	exposure: 1,
+	bloomStrength: 3,
+	bloomThreshold: 0,
+	bloomRadius: 0
+};
+
+var bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.85);
+bloomPass.threshold = bloomparams.bloomThreshold;
+bloomPass.strength = bloomparams.bloomStrength;
+bloomPass.radius = bloomparams.bloomRadius;
+composer.addPass(bloomPass)
+bloomPass.renderToScreen = true;
+
 let controls = new THREE.PointerLockControls(camera, renderer.domElement);
+
+const width = window.innerWidth;
+const height = window.innerHeight;
 
 var USE_WIREFRAME = true;
 
@@ -173,7 +196,7 @@ function animate(){
 		player.speed = 0.2;
 	}
 
-	renderer.render(scene, camera);
+	composer.render();
 }
 
 function keyDown(event){
@@ -184,7 +207,22 @@ function keyUp(event){
 	keyboard[event.keyCode] = false;
 }
 
+function onWindowResize() {
+	camera.aspect = width / height;
+	camera.updateProjectionMatrix();
+
+	renderer.setSize( width, height );
+	composer.setSize( width, height );
+}
+
 window.addEventListener('keydown', keyDown);
 window.addEventListener('keyup', keyUp);
+window.addEventListener( 'resize', onWindowResize );
+
+camera.aspect = width / height;
+camera.updateProjectionMatrix();
+
+renderer.setSize( width, height );
+composer.setSize( width, height );
 
 window.onload = init;
