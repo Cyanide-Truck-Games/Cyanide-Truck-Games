@@ -5,7 +5,7 @@ var keyboard = {};
 var player = {height:1.8, speed:0.2};
 
 renderer = new THREE.WebGLRenderer();
-camera = new THREE.PerspectiveCamera(90, 1280/720, 1, 100);
+camera = new THREE.PerspectiveCamera(90, 1280/720, 0.1, 1000);
 scene = new THREE.Scene();
 
 var composer = new THREE.EffectComposer(renderer);
@@ -34,6 +34,12 @@ const width = window.innerWidth;
 const height = window.innerHeight;
 
 var USE_WIREFRAME = true;
+
+var stats = new Stats();
+
+stats.showPanel( 0 );
+document.body.appendChild( stats.dom );
+
 
 function init(){
 	mesh = new THREE.Mesh(
@@ -149,12 +155,15 @@ function init(){
 	renderer.shadowMap.enabled = true;
 	renderer.shadowMap.type = THREE.BasicShadowMap;
 
+	window.addEventListener( 'resize', onWindowResize );
+
 	document.body.appendChild(renderer.domElement);
 	
 	animate();
 }
 
 function animate(){
+	stats.begin();
 	requestAnimationFrame(animate);
 
 	controls.lock()
@@ -197,6 +206,7 @@ function animate(){
 	}
 
 	composer.render();
+	stats.end();
 }
 
 function keyDown(event){
@@ -217,7 +227,6 @@ function onWindowResize() {
 
 window.addEventListener('keydown', keyDown);
 window.addEventListener('keyup', keyUp);
-window.addEventListener( 'resize', onWindowResize );
 
 camera.aspect = width / height;
 camera.updateProjectionMatrix();
