@@ -122,6 +122,42 @@ function init(){
     sphereMesh3.castShadow = true;
     sphereMesh3.position.set(-20, 1, 40)
 	scene.add(sphereMesh3)
+
+	box = new THREE.Mesh(
+		new THREE.BoxGeometry(20, 20, 20, 20),
+		new THREE.MeshPhongMaterial({color:0xff4444, wireframe:USE_WIREFRAME})
+	)
+	box.receiveShadow = true;
+    box.castShadow = true;
+    box.position.set(-30, 0, 70)
+	scene.add(box)
+
+	box2 = new THREE.Mesh(
+		new THREE.BoxGeometry(20, 20, 20, 20),
+		new THREE.MeshPhongMaterial({color:0xff4444, wireframe:USE_WIREFRAME})
+	)
+	box2.receiveShadow = true;
+    box2.castShadow = true;
+    box2.position.set(70, 0, 20)
+	scene.add(box2)
+
+	box3 = new THREE.Mesh(
+		new THREE.BoxGeometry(20, 20, 20, 20),
+		new THREE.MeshPhongMaterial({color:0xff4444, wireframe:USE_WIREFRAME})
+	)
+	box3.receiveShadow = true;
+    box3.castShadow = true;
+    box3.position.set(-50, 0, 20)
+	scene.add(box3)
+
+	box4 = new THREE.Mesh(
+		new THREE.BoxGeometry(20, 20, 20, 20),
+		new THREE.MeshPhongMaterial({color:0xff4444, wireframe:USE_WIREFRAME})
+	)
+	box4.receiveShadow = true;
+    box4.castShadow = true;
+    box4.position.set(0, 0, -30)
+	scene.add(box4)
 	
 	ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
 	scene.add(ambientLight);
@@ -176,6 +212,12 @@ function animate(){
 	
 	mesh3.rotation.x += 0.01;
 	mesh3.rotation.y += 0.02;
+
+	sphereMesh.rotation.y += 0.01
+
+	sphereMesh2.rotation.y += 0.01
+
+	sphereMesh3.rotation.y += 0.01
 
 	if(keyboard[87]){
 		controls.moveForward(player.speed)
