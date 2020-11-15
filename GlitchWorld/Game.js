@@ -147,7 +147,7 @@ function init(){
 	)
 	box3.receiveShadow = true;
     box3.castShadow = true;
-    box3.position.set(-50, 0, 20)
+    box3.position.set(-50, 0, 10)
 	scene.add(box3)
 
 	box4 = new THREE.Mesh(
@@ -156,8 +156,18 @@ function init(){
 	)
 	box4.receiveShadow = true;
     box4.castShadow = true;
-    box4.position.set(0, 0, -30)
+    box4.position.set(0, 0, -50)
 	scene.add(box4)
+
+	circleMesh = new THREE.Mesh(
+		new THREE.CircleGeometry(50, 50, 50, 50),
+		new THREE.MeshPhongMaterial({color:0xffffff, wireframe:USE_WIREFRAME})
+	)
+	circleMesh.receiveShadow = true;
+    circleMesh.castShadow = true;
+	circleMesh.position.set(0, -20, 0)
+	circleMesh.rotation.x -= Math.PI / 2;
+	scene.add(circleMesh)
 	
 	ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
 	scene.add(ambientLight);
@@ -213,11 +223,18 @@ function animate(){
 	mesh3.rotation.x += 0.01;
 	mesh3.rotation.y += 0.02;
 
+	box.rotation.x += 0.01;
+	box2.rotation.x += 0.01;
+	box3.rotation.x += 0.01;
+	box4.rotation.x += 0.01;
+
 	sphereMesh.rotation.y += 0.01
 
 	sphereMesh2.rotation.y += 0.01
 
 	sphereMesh3.rotation.y += 0.01
+
+	circleMesh.rotation.z -= 0.01
 
 	if(keyboard[87]){
 		controls.moveForward(player.speed)
