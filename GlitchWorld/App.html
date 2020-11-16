@@ -5,11 +5,31 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<title>GlitchWorld Early Access</title>
 		<style>
-			body { margin: 0; }
-			canvas { display: block; }
+			body { margin: 0; z-index: 100;}
+			canvas { display: block; z-index: 50;}
+
+			#info {
+				position: absolute;
+				top: 10px;
+				width: 100%;
+				text-align: center;
+				z-index: 100;
+				display:block;
+				color: white;
+			}
+
+			a {
+				color: #ff0;
+				text-decoration: none;
+			}
+
+			a:hover {
+				text-decoration: underline;
+			}
 		</style>
 	</head>
-	<body>
+	<body style="font-family: Monospace;">
+		<div id="info">Created and Scripted by <a href="https://www.youtube.com/channel/UCcvFUB_gkaQ3nmPo_v6EROg">CoolCoderStudio</a><br>Check out the code <a href="https://github.com/Cyanide-Truck-Games/Cyanide-Truck-Games/blob/main/GlitchWorld/Game.js">here</a></div>
 		<script src="js/three.js"></script>
 		<script src="js/PointerLockControls.js"></script>
 		<script src="js/EffectComposer.js"></script>
