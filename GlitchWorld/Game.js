@@ -203,8 +203,6 @@ function init(){
 	window.addEventListener( 'resize', onWindowResize );
 
 	document.body.appendChild(renderer.domElement);
-
-	sound.play();
 	
 	animate();
 }
@@ -311,6 +309,7 @@ loader.load(
 
 	function ( audioBuffer ) {
 		sound.setBuffer( audioBuffer );
+		sound.play();
 	},
 
 	function ( xhr ) {
