@@ -40,6 +40,35 @@ var stats = new Stats();
 stats.showPanel( 0 );
 document.body.appendChild( stats.dom );
 
+const audioListener = new THREE.AudioListener();
+
+camera.add( audioListener );
+
+const sound = new THREE.Audio( audioListener );
+
+scene.add(sound);
+
+const loader = new THREE.AudioLoader();
+
+loader.load(
+	'GW_Theme.mp3',
+
+	function ( audioBuffer ) {
+		sound.setBuffer( audioBuffer );
+		sound.setLoop( true );
+		sound.play();
+	},
+
+	function ( xhr ) {
+		console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+	},
+
+	// onError callback
+	function ( err ) {
+		console.log( 'An error happened' );
+	}
+);
+
 function init(){
 	mesh = new THREE.Mesh(
 		new THREE.BoxGeometry(1,1,1),
@@ -293,31 +322,3 @@ renderer.setSize( width, height );
 composer.setSize( width, height );
 
 window.onload = init;
-
-const audioListener = new THREE.AudioListener();
-
-camera.add( audioListener );
-
-const sound = new THREE.Audio( audioListener );
-
-scene.add(sound);
-
-const loader = new THREE.AudioLoader();
-
-loader.load(
-	'GW_Theme.mp3',
-
-	function ( audioBuffer ) {
-		sound.setBuffer( audioBuffer );
-		sound.play();
-	},
-
-	function ( xhr ) {
-		console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
-	},
-
-	// onError callback
-	function ( err ) {
-		console.log( 'An error happened' );
-	}
-);
