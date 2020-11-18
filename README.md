@@ -11,4 +11,4 @@ Yes! You can get all Cyanide Truck Games' products from here and here only!
 <a id="raw-url" href="https://raw.githubusercontent.com/Cyanide-Truck-Games/Cyanide-Truck-Games/main/ta_ne_launcher.zip">Download TA: NE Demo</a>
 
 # Browser Games to play on Cyanide Truck Games' Site
-<a id="raw-url" href="https://www.cyanidetruckgames/GlitchWorld/App.html>GlitchWorld</a>
+<a id="raw-url" href="https://www.cyanidetruckgames/GlitchWorld/App.html">GlitchWorld</a>
