@@ -203,6 +203,8 @@ function init(){
 	window.addEventListener( 'resize', onWindowResize );
 
 	document.body.appendChild(renderer.domElement);
+
+	sound.play();
 	
 	animate();
 }
@@ -210,8 +212,6 @@ function init(){
 function animate(){
 	stats.begin();
 	requestAnimationFrame(animate);
-
-	sound.play();
 
 	controls.lock()
 	
