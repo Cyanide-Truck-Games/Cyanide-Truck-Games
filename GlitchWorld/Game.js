@@ -63,9 +63,8 @@ loader.load(
 		console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
 	},
 
-	// onError callback
 	function ( err ) {
-		console.log( 'An error happened' );
+		console.log( 'There was an error loading the audio...' );
 	}
 );
 
@@ -196,7 +195,17 @@ function init(){
 	circleMesh.position.set(0, -20, 0)
 	circleMesh.rotation.x -= Math.PI / 2;
 	scene.add(circleMesh)
-	
+
+	cylinderMesh = new THREE.Mesh(
+		new THREE.CylinderGeometry(100, 100, 500, 100, 100, true),
+		new THREE.MeshPhongMaterial({color:"rgb(0, 0, 255)", wireframe:USE_WIREFRAME})
+	)
+	cylinderMesh.receiveShadow = true;
+	cylinderMesh.castShadow = true;
+	cylinderMesh.position.set(0, 0, 0);
+	cylinderMesh.rotation.x -= Math.PI / 2;
+	scene.add(cylinderMesh);
+
 	ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
 	scene.add(ambientLight);
 	
@@ -255,6 +264,9 @@ function animate(){
 	box2.rotation.x += 0.01;
 	box3.rotation.x += 0.01;
 	box4.rotation.x += 0.01;
+
+	cylinderMesh.rotation.x += 0.001;
+	cylinderMesh.rotation.y += 0.001;
 
 	sphereMesh.rotation.y += 0.01
 
