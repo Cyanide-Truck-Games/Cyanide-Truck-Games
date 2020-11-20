@@ -8,7 +8,7 @@
     <body class="font">
         <div class="toolbar">
           <a href="index.html"><button class="toolbutton" style="color: black;">Home</button></a>
-          <a href="games.html"><button class="toolbutton" style="color: black;">Games</button></a>
+          <a href="games.php"><button class="toolbutton" style="color: black;">Games</button></a>
           <a href="news.html"><button class="toolbutton" style="color: black;"">News</button></a>
         </div>
         <h2>Games:</h2>
@@ -34,5 +34,40 @@
         <iframe width="560" height="315" src="https://www.youtube.com/embed/ItVYUrM-LG0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> <br>
         <br>
         <a href="GlitchWorld/App.html"><button class="btn">Play in Browser</button></a>
+
+        <form action="" method="POST">
+            <label>Name: <br><input type="text" name="name"><br></label>
+            <label>Message: <br><textarea cols="45" rows="5" name="mes"></textarea><br></label>
+            <input type="submit" name="post" value="Post">
+        </form>
     </body>
 </html>
+
+<?php
+    $name = $_POST["name"];
+    $text = $_POST["mes"];
+    $post = $_POST["post"]
+
+    if ($post) {
+        $write = fopen("com.txt", "a+");
+        fwrite($write, "<u><b> $name </b></u><br>$text<br><br>");
+        fclose($write);
+
+        $read = fopen("com.txt", "r+t");
+        echo "All Comments:<br>";
+        while (!feof($read)) {
+            echo fread($read, 1024);
+        }
+
+        fclose($read);
+    }
+    else {
+        $read = fopen("com.txt", "r+t");
+        echo "All Comments:<br>";
+        while (!feof($read)) {
+            echo fread($read, 1024);
+        }
+
+        fclose($read);
+    }
+?>
