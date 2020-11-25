@@ -26,14 +26,14 @@ bloomPass.threshold = bloomparams.bloomThreshold;
 bloomPass.strength = bloomparams.bloomStrength;
 bloomPass.radius = bloomparams.bloomRadius;
 
-var USE_BLOOM = true;
-
 let controls = new THREE.PointerLockControls(camera, renderer.domElement);
 
 const width = window.innerWidth;
 const height = window.innerHeight;
 
 var USE_WIREFRAME = true;
+var USE_BLOOM = true;
+var USE_AUDIO = true;
 
 var stats = new Stats();
 
@@ -234,33 +234,35 @@ function init(){
 
 	document.body.appendChild(renderer.domElement);
 
-	const audioListener = new THREE.AudioListener();
+	if (USE_AUDIO) {
+		const audioListener = new THREE.AudioListener();
 
-	camera.add( audioListener );
+		camera.add( audioListener );
 
-	const sound = new THREE.Audio( audioListener );
+		const sound = new THREE.Audio( audioListener );
 
-	scene.add(sound);
+		scene.add(sound);
 
-	const loader = new THREE.AudioLoader();
+		const loader = new THREE.AudioLoader();
 
-	loader.load(
-		'GW_Theme.mp3',
+		loader.load(
+			'GW_Theme.mp3',
 
-		function ( audioBuffer ) {
-			sound.setBuffer( audioBuffer );
-			sound.setLoop( true );
-			sound.play();
-		},
+			function ( audioBuffer ) {
+				sound.setBuffer( audioBuffer );
+				sound.setLoop( true );
+				sound.play();
+			},
 
-		function ( xhr ) {
-			console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
-		},
+			function ( xhr ) {
+				console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+			},
 
-		function ( err ) {
-			console.log( 'There was an error loading the audio...' );
-		}
-	);
+			function ( err ) {
+				console.log( 'There was an error loading the audio...' );
+			}
+		);
+	}
 	
 	animate();
 }
