@@ -69,6 +69,15 @@ loader.load(
 );
 
 function init(){
+	var button = document.getElementById("button");
+	button.remove();
+
+	var title = document.getElementById("title-text");
+	title.remove();
+
+	var som = document.getElementById("som");
+	som.remove();
+
 	mesh = new THREE.Mesh(
 		new THREE.BoxGeometry(1,1,1),
 		new THREE.MeshPhongMaterial({color:0xff4444, wireframe:USE_WIREFRAME})
@@ -332,5 +341,3 @@ camera.updateProjectionMatrix();
 
 renderer.setSize( width, height );
 composer.setSize( width, height );
-
-window.onload = init;

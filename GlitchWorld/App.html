@@ -7,6 +7,7 @@
 		<style>
 			body { margin: 0; z-index: 100;}
 			canvas { display: block; z-index: 50;}
+			@font-face { font-family: Glitch; src: url('fonts/Parametric\ Glitch\ Bold.ttf'); } 
 
 			#info {
 				position: absolute;
@@ -22,23 +23,63 @@
 				text-align: center;
 			}
 
-			.button {
-				position: absolute;
-    			top: 50%;
-			}
 
-			a {
+			#info a {
 				color: #ff0;
 				text-decoration: none;
 			}
 
-			a:hover {
+			#info a:hover {
 				text-decoration: underline;
 			}
+
+			.button_wrapper {
+				position: absolute;
+				top: 50%;
+				width: 100%;
+				text-align: center;
+				z-index: 100;
+			}
+
+			.button_wrapper a {
+				color: black;
+				text-decoration: none;
+				padding: 10px;
+			}
+
+			.button_wrapper a:hover {
+				background-color: #777;
+			}
+
+			.text_wrapper {
+				position: absolute;
+				top: 25%;
+				width: 100%;
+				text-align: center;
+				z-index: 100;
+				display:block;
+				font-family: Glitch;
+				font-size: xx-large;
+			}
 		</style>
-	</head>
 	<body style="font-family: Monospace;">
-		<div id="info">Created, Scripted and Music by <a href="https://www.youtube.com/channel/UCcvFUB_gkaQ3nmPo_v6EROg">CoolCoderStudio</a></div>
+		<div id="info">Scripting, Created and Music by <a href="https://github.com/Kurfunkode">Kurfunkode</a></div>
+		<div class="text_wrapper">
+			<h1 id="title-text">GlitchWorld</h1>
+		</div>
+		<div class="button_wrapper">
+			<a id="button" onclick="init(); clicked();">Play</a> <br>
+			<br>
+			<br>
+			<a id="som" onclick="USE_WIREFRAME = false;">Disable Wireframe Effect</a>
+		</div>
+		<script>
+			document.getElementById("info").style.visibility = "hidden";
+
+			function clicked() {
+				document.getElementById("info").style.visibility = "visible";
+			}
+		</script>
 		<script src="js/three.js"></script>
 		<script src="js/PointerLockControls.js"></script>
 		<script src="js/EffectComposer.js"></script>
