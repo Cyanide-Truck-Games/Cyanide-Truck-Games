@@ -25,8 +25,8 @@ var bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2( window.innerWidth, 
 bloomPass.threshold = bloomparams.bloomThreshold;
 bloomPass.strength = bloomparams.bloomStrength;
 bloomPass.radius = bloomparams.bloomRadius;
-composer.addPass(bloomPass)
-bloomPass.renderToScreen = true;
+
+var USE_BLOOM = true;
 
 let controls = new THREE.PointerLockControls(camera, renderer.domElement);
 
@@ -47,8 +47,16 @@ function init(){
 	var title = document.getElementById("title-text");
 	title.remove();
 
-	var som = document.getElementById("som");
-	som.remove();
+	var dwe = document.getElementById("dwe");
+	dwe.remove();
+
+	var db = document.getElementById("db");
+	db.remove();
+
+	if (USE_BLOOM) {
+		composer.addPass(bloomPass)
+		bloomPass.renderToScreen = true;
+	}
 
 	mesh = new THREE.Mesh(
 		new THREE.BoxGeometry(1,1,1),
