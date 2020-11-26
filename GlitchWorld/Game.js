@@ -56,6 +56,9 @@ function init(){
 	var settings = document.getElementById("settings");
 	settings.remove();
 
+	var ma = document.getElementById("ma");
+	ma.remove();
+
 	if (USE_BLOOM) {
 		composer.addPass(bloomPass)
 		bloomPass.renderToScreen = true;
