@@ -249,7 +249,7 @@ function init(){
 		const loader = new THREE.AudioLoader();
 
 		loader.load(
-			'GW_Theme.mp3',
+			'GJ_Theme.mp3',
 
 			function ( audioBuffer ) {
 				sound.setBuffer( audioBuffer );
