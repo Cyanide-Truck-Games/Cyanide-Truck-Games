@@ -23,7 +23,7 @@ scene.add(sound);
 const loader = new THREE.AudioLoader();
 
 loader.load(
-	'The Future is Boring.mp3',
+	'audio/The Future is Boring.mp3',
 
 	function ( audioBuffer ) {
 		sound.setBuffer( audioBuffer );
@@ -62,16 +62,6 @@ function init() {
 
         objLoader.load("models/guard/ig1.obj", function(guardMesh) {
             scene.add(guardMesh);
-        });
-    });
-
-    mtlLoader.load("models/car/Future Car.mtl", function(carMaterials) {
-        carMaterials.preload();
-        var objLoader = new THREE.OBJLoader();
-        objLoader.setMaterials(carMaterials);
-
-        objLoader.load("models/car/Future Car.obj", function(carMesh) {
-            scene.add(carMesh);
         });
     });
 
