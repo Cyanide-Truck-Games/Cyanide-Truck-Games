@@ -1,0 +1,33 @@
+# Exported from 3D Builder
+
+newmtl hip
+Kd 1.000000 1.000000 1.000000
+map_Kd cadia 2014.jpg
+
+newmtl detail
+Kd 1.000000 1.000000 1.000000
+map_Kd genou-surface.jpg
+
+newmtl detail_detail
+Kd 1.000000 1.000000 1.000000
+map_Kd genou-surface.jpg
+
+newmtl Flack_RShldr
+Kd 1.000000 1.000000 1.000000
+map_Kd epaulette sergent.jpg
+
+newmtl Flack_RShldr_epaulette_d
+Kd 1.000000 1.000000 1.000000
+map_Kd epaulette sergent.jpg
+
+newmtl detpack_bmp
+Kd 1.000000 1.000000 1.000000
+map_Kd HK_SAT~2.jpg
+
+newmtl detail_genoulliere_(2)
+Kd 1.000000 1.000000 1.000000
+map_Kd genou-surface.jpg
+
+newmtl detpack_bmp_hk_satchel_(2)
+Kd 1.000000 1.000000 1.000000
+map_Kd HK_SAT~2.jpg
