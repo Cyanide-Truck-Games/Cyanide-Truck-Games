@@ -1,0 +1,17 @@
+.button_wrapper {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    z-index: 100;
+}
+
+.button_wrapper a {
+    color: black;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.button_wrapper a:hover {
+    background-color: #777;
+}
