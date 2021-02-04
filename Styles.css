@@ -4,41 +4,59 @@
     color: white;
 }
 
-  .btn {
-    background-color: DodgerBlue;
-    border: none;
-    color: white;
-    padding: 12px 30px;
-    cursor: pointer;
-    font-size: 20px;
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
 }
 
-  .btn:hover {
-    background-color: RoyalBlue;
+.btn:hover {
+  background-color: RoyalBlue;
 }
 
-  .toolbutton {
-    background-color: yellow;
-    border: none;
-    color: white;
-    padding: 12px 30px;
-    cursor: pointer;
-    font-size: 20px;
+.toolbutton {
+  background-color: yellow;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
 }
 
-  .toolbutton:hover {
-    background-color: yellowgreen;
+.toolbutton:hover {
+  background-color: yellowgreen;
 }
 
-  .img {
-    width: 600px;
-    height: 300px;
+.img {
+  width: 600px;
+  height: 300px;
 }
 
-  .toolbar {
-    background-color: yellow;
-    width: auto;
-    height: 60px;
-    padding-top: 10px;
-    padding-left: 10px;
+.toolbar {
+  background-color: yellow;
+  width: auto;
+  height: 60px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 1cm;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(71, 71, 71);
+  border-radius: 1cm;
+}
+
+::-webkit-scrollbar-track {
+  background: blue;
 }
