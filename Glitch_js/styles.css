@@ -16,7 +16,6 @@ canvas { display: block; z-index: 50;}
     text-align: center;
 }
 
-
 #info a {
     color: #ff0;
     text-decoration: none;
@@ -51,6 +50,5 @@ canvas { display: block; z-index: 50;}
     text-align: center;
     z-index: 100;
     display:block;
-    font-family: Glitch;
     font-size: xx-large;
 }
