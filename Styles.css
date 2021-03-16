@@ -24,11 +24,6 @@
 .btn:active {
   background-color: rgb(50, 93, 223);
 }
-  
-.topnav a.active {
-  background-color: #4CAF50;
-  color: white;
-}
 
 .img {
   width: 600px;
@@ -36,6 +31,8 @@
 }
 
 .toolbar {
+  overflow: hidden;
+  box-shadow: 5px 5px 2.5px rgb(63, 63, 63);
   background-color: yellow;
   width: auto;
   height: 60px;
