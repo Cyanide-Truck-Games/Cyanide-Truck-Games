@@ -1,33 +1,33 @@
 .font {
-    font-family: sans-serif;
-    background-color: blue;
+  font-family: sans-serif;
+  background-color: blue;
     color: white;
 }
 
 .btn {
-  background-color: DodgerBlue;
-  border: none;
+  border: 1cm;
+  border-radius: 1cm;
+  background-color: dodgerblue;
   color: white;
-  padding: 12px 30px;
-  cursor: pointer;
-  font-size: 20px;
+  padding: 0.5cm;
+  padding-left: 2cm;
+  padding-right: 2cm;
+  font-size: x-large;
+  outline: none;
 }
 
 .btn:hover {
-  background-color: RoyalBlue;
+  background-color: royalblue;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.toolbutton {
-  background-color: yellow;
-  border: none;
+.btn:active {
+  background-color: rgb(50, 93, 223);
+}
+  
+.topnav a.active {
+  background-color: #4CAF50;
   color: white;
-  padding: 12px 30px;
-  cursor: pointer;
-  font-size: 20px;
-}
-
-.toolbutton:hover {
-  background-color: yellowgreen;
 }
 
 .img {
@@ -39,8 +39,22 @@
   background-color: yellow;
   width: auto;
   height: 60px;
+  border-radius: 0.5cm;
   padding-top: 10px;
   padding-left: 10px;
+}
+
+.toolbar a {
+  float: left;
+  color: #f2f2f2;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+  
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
 }
 
 ::-webkit-scrollbar {
