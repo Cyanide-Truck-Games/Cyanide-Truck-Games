@@ -54,6 +54,13 @@
   color: black;
 }
 
+.toolbar img {
+  float: left;
+  width: 65px;
+  padding-left: 14px;
+  height: 50px;
+}
+
 ::-webkit-scrollbar {
   width: 20px;
 }
