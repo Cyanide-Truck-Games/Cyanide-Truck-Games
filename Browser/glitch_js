@@ -4,12 +4,12 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<title>Glitch.js</title>
-		<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="Glitch_js/styles.css">
 	</head>
 	<body style="font-family: Monospace;">
 		<div id="info">Scripting and Music by <a href="https://github.com/Kurfunkode">Kurfunkode</a></div>
 		<div class="text_wrapper">
-			<img src="Title.gif" style="width: 250px; height: 50px;" id="title-text">
+			<img src="Glitch_js_Files/Title.gif" style="width: 250px; height: 50px;" id="title-text">
 		</div>
 		<div class="button_wrapper">
 			<a id="button" onclick="init(); clicked();">Play</a> <br>
@@ -30,15 +30,15 @@
 				document.getElementById("info").style.visibility = "visible";
 			}
 		</script>
-		<script src="js/three.js"></script>
-		<script src="js/PointerLockControls.js"></script>
-		<script src="js/EffectComposer.js"></script>
-		<script src="js/RenderPass.js"></script>
-		<script src="js/ShaderPass.js"></script>
-		<script src="js/CopyShader.js"></script>
-		<script src="js/LuminosityHighPassShader.js"></script>
-		<script src="js/UnrealBloomPass.js"></script>
-		<script src="js/stats.js"></script>
-		<script src="Game.js"></script>
+		<script src="Glitch_js_Files/js/three.js"></script>
+		<script src="Glitch_js_Files/js/PointerLockControls.js"></script>
+		<script src="Glitch_js_Files/js/EffectComposer.js"></script>
+		<script src="Glitch_js_Files/js/RenderPass.js"></script>
+		<script src="Glitch_js_Files/js/ShaderPass.js"></script>
+		<script src="Glitch_js_Files/js/CopyShader.js"></script>
+		<script src="Glitch_js_Files/js/LuminosityHighPassShader.js"></script>
+		<script src="Glitch_js_Files/js/UnrealBloomPass.js"></script>
+		<script src="Glitch_js_Files/js/stats.js"></script>
+		<script src="Glitch_js_Files/Game.js"></script>
 	</body>
 </html>
