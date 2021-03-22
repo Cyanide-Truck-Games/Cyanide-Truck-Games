@@ -34,6 +34,7 @@ const height = window.innerHeight;
 var USE_WIREFRAME = true;
 var USE_BLOOM = true;
 var USE_AUDIO = true;
+var REBOOTED = false;
 
 var stats = new Stats();
 
@@ -52,6 +53,9 @@ function init(){
 
 	var db = document.getElementById("db");
 	db.remove();
+
+	var rb = document.getElementById("rb");
+	rb.remove();
 
 	var settings = document.getElementById("settings");
 	settings.remove();
@@ -248,23 +252,44 @@ function init(){
 
 		const loader = new THREE.AudioLoader();
 
-		loader.load(
-			'GJ_Theme.mp3',
-
-			function ( audioBuffer ) {
-				sound.setBuffer( audioBuffer );
-				sound.setLoop( true );
-				sound.play();
-			},
-
-			function ( xhr ) {
-				console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
-			},
-
-			function ( err ) {
-				console.log( 'There was an error loading the audio...' );
-			}
-		);
+		if (REBOOTED) {
+			loader.load(
+				'GJ_Reboot.mp3',
+	
+				function ( audioBuffer ) {
+					sound.setBuffer( audioBuffer );
+					sound.setLoop( true );
+					sound.play();
+				},
+	
+				function ( xhr ) {
+					console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+				},
+	
+				function ( err ) {
+					console.log( 'There was an error loading the audio...' );
+				}
+			);
+		}
+		else {
+			loader.load(
+				'GJ_Theme.mp3',
+	
+				function ( audioBuffer ) {
+					sound.setBuffer( audioBuffer );
+					sound.setLoop( true );
+					sound.play();
+				},
+	
+				function ( xhr ) {
+					console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+				},
+	
+				function ( err ) {
+					console.log( 'There was an error loading the audio...' );
+				}
+			);
+		}
 	}
 	
 	animate();
