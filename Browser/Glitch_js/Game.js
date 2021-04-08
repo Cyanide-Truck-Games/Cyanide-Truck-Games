@@ -279,11 +279,11 @@ function animate(){
 	}
 
 	if(keyboard[32]){
-		camera.position.y += player.speed;
+		camera.position.y += 0.1;
 	}
 
 	if(keyboard[16]){
-		camera.position.y -= player.speed;
+		camera.position.y -= 0.1;
 	}
 
 	if (keyboard[67]) {
