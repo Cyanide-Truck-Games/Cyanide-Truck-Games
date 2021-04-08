@@ -28,7 +28,7 @@ canvas { display: block; z-index: 50;}
 }
 
 #info a {
-    color: #ff0;
+    color: orange;
     text-decoration: none;
 }
 

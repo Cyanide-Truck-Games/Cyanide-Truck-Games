@@ -4,6 +4,8 @@ var meshFloor, ambientLight, light;
 var keyboard = {};
 var player = {height:1.8, speed:0, ySpeed:0};
 
+var boost = 1000
+
 renderer = new THREE.WebGLRenderer();
 camera = new THREE.PerspectiveCamera(100, 1280/720, 0.1, 5000);
 scene = new THREE.Scene();
@@ -101,6 +103,15 @@ function init(){
     planetMesh2.castShadow = true;
 	planetMesh2.position.set(-4000, 1000, 0)
     scene.add(planetMesh2)
+
+	planetMesh3 = new THREE.Mesh(
+        new THREE.SphereGeometry(700, 700, 10, 10),
+        new THREE.MeshPhongMaterial({color:0x800080, wireframe:USE_WIREFRAME})
+    )
+    planetMesh3.receiveShadow = true;
+    planetMesh3.castShadow = true;
+	planetMesh3.position.set(0, 2000, 0)
+    scene.add(planetMesh3)
     
     meshFloor2 = new THREE.Mesh(
         new THREE.PlaneGeometry(10, 10, 10, 10),
@@ -242,7 +253,7 @@ function animate(){
 	stats.begin();
 	requestAnimationFrame(animate);
 
-	controls.lock()
+	document.getElementById("boostamount").innerHTML = boost;
 
 	cylinderMesh.rotation.x += 0.001;
 	cylinderMesh.rotation.y += 0.001;
@@ -254,6 +265,7 @@ function animate(){
 	controls.moveForward(player.speed)
 
 	if(keyboard[87]){
+		controls.lock()
 		if (player.speed < 2)
 		{
 			player.speed += 0.001;
@@ -275,13 +287,23 @@ function animate(){
 	}
 
 	if (keyboard[67]) {
-		player.speed *= 1.005
+		boost -= 1;
+
+		if (boost > 0)
+		{
+			player.speed *= 1.005
+		}
+
+		if (boost < 0)
+		{
+			boost = 0;
+		}
 	}
 
 	if (keyboard[83]) {
 		if (player.speed > -0.5)
 		{
-			player.speed -= 0.001;
+			player.speed -= 0.0001;
 		}
 	}
 	else {
