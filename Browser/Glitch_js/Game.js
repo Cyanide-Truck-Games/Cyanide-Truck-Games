@@ -4,7 +4,7 @@ var meshFloor, ambientLight, light;
 var keyboard = {};
 var player = {height:1.8, speed:0, ySpeed:0};
 
-var boost = 1000
+var boost = 500
 
 renderer = new THREE.WebGLRenderer();
 camera = new THREE.PerspectiveCamera(100, 1280/720, 0.1, 5000);
