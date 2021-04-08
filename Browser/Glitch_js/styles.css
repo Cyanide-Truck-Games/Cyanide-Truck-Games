@@ -12,6 +12,17 @@ canvas { display: block; z-index: 50;}
     color: white;
 }
 
+#hud {
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+    text-align: center;
+    z-index: 100;
+    display:block;
+    color: white;
+    text-shadow: 2px 2px #ff0000;
+}
+
 .wrapper {
     text-align: center;
 }

@@ -2,10 +2,10 @@ var scene, camera, renderer, mesh;
 var meshFloor, ambientLight, light;
 
 var keyboard = {};
-var player = {height:1.8, speed:0.2};
+var player = {height:1.8, speed:0, ySpeed:0};
 
 renderer = new THREE.WebGLRenderer();
-camera = new THREE.PerspectiveCamera(90, 1280/720, 0.1, 1000);
+camera = new THREE.PerspectiveCamera(100, 1280/720, 0.1, 5000);
 scene = new THREE.Scene();
 
 var composer = new THREE.EffectComposer(renderer);
@@ -67,15 +67,6 @@ function init(){
 		composer.addPass(bloomPass)
 		bloomPass.renderToScreen = true;
 	}
-
-	mesh = new THREE.Mesh(
-		new THREE.BoxGeometry(1,1,1),
-		new THREE.MeshPhongMaterial({color:0xff4444, wireframe:USE_WIREFRAME})
-	);
-	mesh.position.y += 1;
-	mesh.receiveShadow = true;
-	mesh.castShadow = true;
-	scene.add(mesh);
 	
 	meshFloor = new THREE.Mesh(
 		new THREE.PlaneGeometry(10,10, 10,10),
@@ -93,15 +84,23 @@ function init(){
     sphereMesh.castShadow = true;
     scene.add(sphereMesh)
 
-    mesh2 = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshPhongMaterial({color:0xff4444, wireframe:USE_WIREFRAME})
+	planetMesh = new THREE.Mesh(
+        new THREE.SphereGeometry(1000, 1000, 10, 10),
+        new THREE.MeshPhongMaterial({color:0xff0000, wireframe:USE_WIREFRAME})
     )
-    mesh2.position.y += 1;
-    mesh2.position.set(30, 1, 50)
-	mesh2.receiveShadow = true;
-	mesh2.castShadow = true;
-    scene.add(mesh2);
+    planetMesh.receiveShadow = true;
+    planetMesh.castShadow = true;
+	planetMesh.position.set(5000, 0, 0)
+    scene.add(planetMesh)
+
+	planetMesh2 = new THREE.Mesh(
+        new THREE.SphereGeometry(2000, 2000, 10, 10),
+        new THREE.MeshPhongMaterial({color:0x00ff00, wireframe:USE_WIREFRAME})
+    )
+    planetMesh2.receiveShadow = true;
+    planetMesh2.castShadow = true;
+	planetMesh2.position.set(-4000, 1000, 0)
+    scene.add(planetMesh2)
     
     meshFloor2 = new THREE.Mesh(
         new THREE.PlaneGeometry(10, 10, 10, 10),
@@ -121,16 +120,6 @@ function init(){
     sphereMesh2.position.set(30, 1, 50)
 	scene.add(sphereMesh2)
 	
-	mesh3 = new THREE.Mesh(
-		new THREE.BoxGeometry(1, 1, 1),
-		new THREE.MeshPhongMaterial({color:0xff4444, wireframe:USE_WIREFRAME})
-	)
-	mesh3.position.y += 1;
-    mesh3.position.set(-20, 1, 40)
-	mesh3.receiveShadow = true;
-	mesh3.castShadow = true;
-	scene.add(mesh3);
-	
 	meshFloor3 = new THREE.Mesh(
         new THREE.PlaneGeometry(10, 10, 10, 10),
         new THREE.MeshPhongMaterial({color:0xffffff, wireframe:USE_WIREFRAME})
@@ -148,52 +137,6 @@ function init(){
     sphereMesh3.castShadow = true;
     sphereMesh3.position.set(-20, 1, 40)
 	scene.add(sphereMesh3)
-
-	box = new THREE.Mesh(
-		new THREE.BoxGeometry(20, 20, 20, 20),
-		new THREE.MeshPhongMaterial({color:0xff4444, wireframe:USE_WIREFRAME})
-	)
-	box.receiveShadow = true;
-    box.castShadow = true;
-    box.position.set(-30, 0, 70)
-	scene.add(box)
-
-	box2 = new THREE.Mesh(
-		new THREE.BoxGeometry(20, 20, 20, 20),
-		new THREE.MeshPhongMaterial({color:0xff4444, wireframe:USE_WIREFRAME})
-	)
-	box2.receiveShadow = true;
-    box2.castShadow = true;
-    box2.position.set(70, 0, 20)
-	scene.add(box2)
-
-	box3 = new THREE.Mesh(
-		new THREE.BoxGeometry(20, 20, 20, 20),
-		new THREE.MeshPhongMaterial({color:0xff4444, wireframe:USE_WIREFRAME})
-	)
-	box3.receiveShadow = true;
-    box3.castShadow = true;
-    box3.position.set(-50, 0, 10)
-	scene.add(box3)
-
-	box4 = new THREE.Mesh(
-		new THREE.BoxGeometry(20, 20, 20, 20),
-		new THREE.MeshPhongMaterial({color:0xff4444, wireframe:USE_WIREFRAME})
-	)
-	box4.receiveShadow = true;
-    box4.castShadow = true;
-    box4.position.set(0, 0, -50)
-	scene.add(box4)
-
-	circleMesh = new THREE.Mesh(
-		new THREE.CircleGeometry(50, 50, 50, 50),
-		new THREE.MeshPhongMaterial({color:0xffffff, wireframe:USE_WIREFRAME})
-	)
-	circleMesh.receiveShadow = true;
-    circleMesh.castShadow = true;
-	circleMesh.position.set(0, -20, 0)
-	circleMesh.rotation.x -= Math.PI / 2;
-	scene.add(circleMesh)
 
 	cylinderMesh = new THREE.Mesh(
 		new THREE.CylinderGeometry(100, 100, 500, 100, 100, true),
@@ -300,43 +243,27 @@ function animate(){
 	requestAnimationFrame(animate);
 
 	controls.lock()
-	
-	mesh.rotation.x += 0.01;
-    mesh.rotation.y += 0.02;
-    
-    mesh2.rotation.x += 0.01;
-	mesh2.rotation.y += 0.02;
-	
-	mesh3.rotation.x += 0.01;
-	mesh3.rotation.y += 0.02;
-
-	box.rotation.x += 0.01;
-	box2.rotation.x += 0.01;
-	box3.rotation.x += 0.01;
-	box4.rotation.x += 0.01;
 
 	cylinderMesh.rotation.x += 0.001;
 	cylinderMesh.rotation.y += 0.001;
 
 	sphereMesh.rotation.y += 0.01
-
 	sphereMesh2.rotation.y += 0.01
-
 	sphereMesh3.rotation.y += 0.01
 
-	circleMesh.rotation.z -= 0.01
+	controls.moveForward(player.speed)
 
 	if(keyboard[87]){
-		controls.moveForward(player.speed)
+		if (player.speed < 2)
+		{
+			player.speed += 0.001;
+		}
 	}
-	if(keyboard[83]){
-		controls.moveForward(-player.speed)
-	}
-	if(keyboard[65]){
-		controls.moveRight(-player.speed)
-	}
-	if(keyboard[68]){
-		controls.moveRight(player.speed)
+	else {
+		if (player.speed > 0)
+		{
+			player.speed -= 0.001;
+		}
 	}
 
 	if(keyboard[32]){
@@ -347,11 +274,21 @@ function animate(){
 		camera.position.y -= player.speed;
 	}
 
-	if(keyboard[67]){
-		player.speed = 0.5;
+	if (keyboard[67]) {
+		player.speed *= 1.005
+	}
+
+	if (keyboard[83]) {
+		if (player.speed > -0.5)
+		{
+			player.speed -= 0.001;
+		}
 	}
 	else {
-		player.speed = 0.2;
+		if (player.speed < 0)
+		{
+			player.speed += 0.001;
+		}
 	}
 
 	composer.render();
