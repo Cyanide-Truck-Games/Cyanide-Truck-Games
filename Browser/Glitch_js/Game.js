@@ -257,10 +257,12 @@ function animate(){
 	}
 
 	if(keyboard[32]){
+		fuel--;
 		camera.position.y += player.speed;
 	}
 
 	if(keyboard[16]){
+		fuel--;
 		camera.position.y -= player.speed;
 	}
 
