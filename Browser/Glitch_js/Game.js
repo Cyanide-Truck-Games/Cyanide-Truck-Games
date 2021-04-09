@@ -4,11 +4,12 @@ var meshFloor, ambientLight, light;
 var keyboard = {};
 var player = {height:1.8, speed:0, ySpeed:0};
 
+var fuel = 10000
 var boost = 500
 var autopilot = false;
 
 renderer = new THREE.WebGLRenderer();
-camera = new THREE.PerspectiveCamera(100, 1280/720, 0.1, 5000);
+camera = new THREE.PerspectiveCamera(100, 1280/720, 0.1, 100000);
 scene = new THREE.Scene();
 
 var composer = new THREE.EffectComposer(renderer);
@@ -45,20 +46,11 @@ stats.showPanel( 0 );
 document.body.appendChild( stats.dom );
 
 function init(){
-	var button = document.getElementById("button");
-	button.remove();
+	var bwrap = document.getElementById("bwrap");
+	bwrap.remove();
 
 	var title = document.getElementById("title-text");
 	title.remove();
-
-	var db = document.getElementById("db");
-	db.remove();
-
-	var settings = document.getElementById("settings");
-	settings.remove();
-
-	var ma = document.getElementById("ma");
-	ma.remove();
 
 	if (USE_BLOOM) {
 		composer.addPass(bloomPass)
@@ -228,6 +220,7 @@ function animate(){
 	requestAnimationFrame(animate);
 
 	document.getElementById("boostamount").innerHTML = boost;
+	document.getElementById("fuelamount").innerHTML = fuel;
 
 	cylinderMesh.rotation.x += 0.001;
 	cylinderMesh.rotation.y += 0.001;
@@ -240,9 +233,20 @@ function animate(){
 
 	if(keyboard[87]){
 		controls.lock()
+
+		fuel--;
+
 		if (player.speed < 2)
 		{
-			player.speed += 0.001;
+			if (fuel > 0)
+			{
+				player.speed += 0.001;
+			}
+
+			if (fuel < 0)
+			{
+				fuel = 0;
+			}
 		}
 	}
 	else {
@@ -265,6 +269,7 @@ function animate(){
 
 		if (boost > 0)
 		{
+			fuel -= 2;
 			player.speed *= 1.005
 		}
 
@@ -275,9 +280,18 @@ function animate(){
 	}
 
 	if (keyboard[83]) {
+		fuel--;
 		if (player.speed > -0.5)
 		{
-			player.speed -= 0.0001;
+			if (fuel > 0)
+			{
+				player.speed -= 0.0001;
+			}
+
+			if (fuel < 0)
+			{
+				fuel = 0;
+			}
 		}
 	}
 	else {
@@ -288,7 +302,15 @@ function animate(){
 	}
 
 	if (autopilot) {
-		player.speed = 0.5
+		fuel--;
+
+		if (fuel > 0) {
+			player.speed = 0.5
+		}
+
+		if (fuel < 0) {
+			fuel = 0;
+		}
 	}
 
 	composer.render();

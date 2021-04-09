@@ -36,17 +36,18 @@
 				Have fun!
 			</p>
 			<div style="text-align: left; padding-left: 20px; width: fit-content;">
-				<h1>Boost Amount: <span id="boostamount"></span></h1>
+				<h1>Fuel: <span id="fuelamount"></span></h1>
+				<h1>Boost: <span id="boostamount"></span></h1>
 			</div>
 		</div>
-		<div class="button_wrapper">
-			<a id="button" onclick="init(); clicked();">Play</a> <br>
+		<div id="bwrap" class="button_wrapper">
+			<a onclick="init(); clicked();">Play</a> <br>
 			<br>
-			<h1 id="settings">Settings </h1>
-			<a id="ma" onclick="USE_AUDIO = false;">Mute Audio</a> <br>
+			<h1>Settings </h1>
+			<a onclick="USE_AUDIO = false;">Mute Audio</a> <br>
 			<br>
 			<br>
-			<a id="db" onclick="USE_BLOOM = false;">Disable Bloom</a> <br>
+			<a onclick="USE_BLOOM = false;">Disable Bloom</a> <br>
 		</div>
 		<script>
 			document.getElementById("info").style.visibility = "hidden";
