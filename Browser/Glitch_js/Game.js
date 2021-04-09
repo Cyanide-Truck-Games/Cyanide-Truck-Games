@@ -229,7 +229,15 @@ function animate(){
 	sphereMesh2.rotation.y += 0.01
 	sphereMesh3.rotation.y += 0.01
 
-	controls.moveForward(player.speed)
+	if (fuel > 0)
+	{
+		controls.moveForward(player.speed)
+	}
+
+	if (fuel < 0)
+	{
+		fuel = 0;
+	}
 
 	if(keyboard[87]){
 		controls.lock()
@@ -241,11 +249,6 @@ function animate(){
 			if (fuel > 0)
 			{
 				player.speed += 0.001;
-			}
-
-			if (fuel < 0)
-			{
-				fuel = 0;
 			}
 		}
 	}
