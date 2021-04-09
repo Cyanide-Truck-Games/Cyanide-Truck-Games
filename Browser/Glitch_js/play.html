@@ -13,20 +13,26 @@
 			<img src="Title.gif" style="width: 250px; height: 50px;" id="title-text">
 		</div>
 		<div id="hud">
-			<h1>Spaceship: Typhon R-56</h1>
-			<p>
-				Description: <br>
-				This spaceship is small and hard to control. <br>
-				It's maximum speed is around 100,000mph <br>
-				The faster you go, the more slippy it is to control
-			</p>
-			<button style="padding: 10px; font-size: larger; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-image: url(Images/buttons.jpg); border-radius: 0.5cm;" onclick="camera.position.set(0, 1.8, 0); player.speed = 0;">Back to Station</button>
+			<div style="text-align: right; padding-right: 20px;">
+				<h1>Spaceship: Typhon R-56</h1>
+				<p>
+					Description: <br>
+					This spaceship is small and hard to control. <br>
+					It's maximum speed is around 100,000mph <br>
+					The faster you go, the more slippy it is to control
+				</p>
+			</div>
+			<button style="padding: 10px; font-size: larger; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-image: url(Images/buttons.jpg); border-radius: 0.5cm;" onclick="camera.position.set(0, 1.8, 0); player.speed = 0;">Back to Station</button> <br>
+			<br>
+			<button style="padding: 10px; font-size: larger; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-image: url(Images/buttons.jpg); border-radius: 0.5cm;" onclick="toggleAutoPilot();">Auto-pilot</button>
 			<p style="text-align: left; padding-left: 20px; width: fit-content;">
 				Hello, player and welcome to the space station. <br>
 				You can come back here anytime <br>
 				by pressing the "Back to Station" button. <br>
-				To get a little boost on your speed press the "c" key<br>
-				but be careful as too much speed will make your ship go out of control<br>
+				To get a little boost on your speed press the "c" key <br>
+				but be careful as too much speed will make your ship go out of control. <br>
+				The "Auto-pilot" will move the ship slowly <br>
+				and automatically to where you need to be. <br>
 				Have fun!
 			</p>
 			<div style="text-align: left; padding-left: 20px; width: fit-content;">
@@ -40,13 +46,7 @@
 			<a id="ma" onclick="USE_AUDIO = false;">Mute Audio</a> <br>
 			<br>
 			<br>
-			<a id="dwe" onclick="USE_WIREFRAME = false;">Disable Wireframe Effect</a> <br>
-			<br>
-			<br>
 			<a id="db" onclick="USE_BLOOM = false;">Disable Bloom</a> <br>
-			<br>
-			<br>
-			<a id="rb" onclick="REBOOTED = true;">Rebooted Soundtrack</a>
 		</div>
 		<script>
 			document.getElementById("info").style.visibility = "hidden";

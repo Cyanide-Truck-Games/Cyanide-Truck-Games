@@ -5,6 +5,7 @@ var keyboard = {};
 var player = {height:1.8, speed:0, ySpeed:0};
 
 var boost = 500
+var autopilot = false;
 
 renderer = new THREE.WebGLRenderer();
 camera = new THREE.PerspectiveCamera(100, 1280/720, 0.1, 5000);
@@ -34,9 +35,9 @@ const width = window.innerWidth;
 const height = window.innerHeight;
 
 var USE_WIREFRAME = true;
+
 var USE_BLOOM = true;
 var USE_AUDIO = true;
-var REBOOTED = false;
 
 var stats = new Stats();
 
@@ -50,14 +51,8 @@ function init(){
 	var title = document.getElementById("title-text");
 	title.remove();
 
-	var dwe = document.getElementById("dwe");
-	dwe.remove();
-
 	var db = document.getElementById("db");
 	db.remove();
-
-	var rb = document.getElementById("rb");
-	rb.remove();
 
 	var settings = document.getElementById("settings");
 	settings.remove();
@@ -88,7 +83,7 @@ function init(){
 
 	planetMesh = new THREE.Mesh(
         new THREE.SphereGeometry(1000, 1000, 10, 10),
-        new THREE.MeshPhongMaterial({color:0xff0000, wireframe:USE_WIREFRAME})
+        new THREE.MeshPhongMaterial({color:0xff0000, wireframe:false})
     )
     planetMesh.receiveShadow = true;
     planetMesh.castShadow = true;
@@ -97,7 +92,7 @@ function init(){
 
 	planetMesh2 = new THREE.Mesh(
         new THREE.SphereGeometry(2000, 2000, 10, 10),
-        new THREE.MeshPhongMaterial({color:0x00ff00, wireframe:USE_WIREFRAME})
+        new THREE.MeshPhongMaterial({color:0x00ff00, wireframe:false})
     )
     planetMesh2.receiveShadow = true;
     planetMesh2.castShadow = true;
@@ -106,7 +101,7 @@ function init(){
 
 	planetMesh3 = new THREE.Mesh(
         new THREE.SphereGeometry(700, 700, 10, 10),
-        new THREE.MeshPhongMaterial({color:0x800080, wireframe:USE_WIREFRAME})
+        new THREE.MeshPhongMaterial({color:0x800080, wireframe:false})
     )
     planetMesh3.receiveShadow = true;
     planetMesh3.castShadow = true;
@@ -206,44 +201,23 @@ function init(){
 
 		const loader = new THREE.AudioLoader();
 
-		if (REBOOTED) {
-			loader.load(
-				'GJ_Reboot.mp3',
+		loader.load(
+			'GJ_Theme.mp3',
 	
-				function ( audioBuffer ) {
-					sound.setBuffer( audioBuffer );
-					sound.setLoop( true );
-					sound.play();
-				},
+			function ( audioBuffer ) {
+				sound.setBuffer( audioBuffer );
+				sound.setLoop( true );
+				sound.play();
+			},
 	
-				function ( xhr ) {
-					console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
-				},
+			function ( xhr ) {
+				console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+			},
 	
-				function ( err ) {
-					console.log( 'There was an error loading the audio...' );
-				}
-			);
-		}
-		else {
-			loader.load(
-				'GJ_Theme.mp3',
-	
-				function ( audioBuffer ) {
-					sound.setBuffer( audioBuffer );
-					sound.setLoop( true );
-					sound.play();
-				},
-	
-				function ( xhr ) {
-					console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
-				},
-	
-				function ( err ) {
-					console.log( 'There was an error loading the audio...' );
-				}
-			);
-		}
+			function ( err ) {
+				console.log( 'There was an error loading the audio...' );
+			}
+		);
 	}
 	
 	animate();
@@ -279,11 +253,11 @@ function animate(){
 	}
 
 	if(keyboard[32]){
-		camera.position.y += 0.1;
+		camera.position.y += player.speed;
 	}
 
 	if(keyboard[16]){
-		camera.position.y -= 0.1;
+		camera.position.y -= player.speed;
 	}
 
 	if (keyboard[67]) {
@@ -313,8 +287,21 @@ function animate(){
 		}
 	}
 
+	if (autopilot) {
+		player.speed = 0.5
+	}
+
 	composer.render();
 	stats.end();
+}
+
+function toggleAutoPilot() {
+	if (autopilot) {
+		autopilot = false;
+	}
+	else {
+		autopilot = true;
+	}
 }
 
 function keyDown(event){
