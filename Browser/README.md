@@ -1,2 +1,2 @@
 # Browser
-This is where all browser game will go
+This is where all browser games will go
