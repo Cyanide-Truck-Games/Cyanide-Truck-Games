@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Type it!</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type='text/javascript'>var _sf_startpt=(new Date()).getTime()</script>
+<link href='styles.css' rel='stylesheet' type='text/css'>
+<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+<script src="js/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=0.5" /> 
+<script src="game.js"></script>
+</head>
+
+<body style="background-color: purple;">
+    <p style="color: white;">Created by <a href="https://github.com/Kurfunkode">Kurfunkode</a>, based on Us vs Th3m's <a href="https://www.tomscott.com/usvsth3m/edballs/">"Ed Balls Teaches Typing"</a></p>
+
+    <div id="content">
+	    <div class="balls">
+    </div>
+
+    <div id="balls-holder">
+        <div id="instructions">
+            <p>Type &ldquo;<b>Hello,&nbsp;how&nbsp;are&nbsp;you?</b>&rdquo; as fast as&nbsp;you&nbsp;can.<br>The clock starts when you begin typing.</p>
+        </div>
+        <input type="text" class="wobble"  style="text-align: center;" placeholder="Hello, how are you" id="test" autofocus>
+    </div>
+    <div id="preload">
+        <audio id="win" preload="auto">
+            <source src="Audio/win.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="best" preload="auto">
+            <source src="Audio/best.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+</body>
+
+</html>
