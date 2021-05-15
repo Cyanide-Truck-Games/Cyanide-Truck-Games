@@ -1,7 +1,7 @@
 .font {
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
   background-color: blue;
-    color: white;
+  color: white;
 }
 
 .btn {
