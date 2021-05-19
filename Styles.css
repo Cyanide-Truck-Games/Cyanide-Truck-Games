@@ -68,11 +68,6 @@
   text-decoration: none;
 }
 
-.thumbnail p {
-  padding-bottom: 0.5cm;
-  padding-left: 2.25cm;
-}
-
 .thumbnail img {
   width: 400px;
   height: 300px;
