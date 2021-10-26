@@ -20,6 +20,7 @@
         <P>
             Glitch is a browser-based, first person spaceflight simulator
         </P>
+        <div class="item spoon burger"><video id="videoElement" width="640" height="360""><source src="Trailers/Glitch.js Trailer.mov" type="video/mp4"></video></div>
         <br>
         <p>
             Controls: <br>
@@ -31,5 +32,18 @@
         </p>
         <br>
         <a href="../Browser/Glitch_js/play"><button class="btn"><i class="far fa-window-maximize"></i> Play in Browser</button></a>
+
+        <script type="text/javascript">
+            (function(window) {
+                function setupVideo()
+                {
+                    var v = document.getElementById('videoElement');
+                    v.addEventListener('mouseover', function() { this.controls = true; }, false);
+                    v.addEventListener('mouseout', function() { this.controls = false; }, false);
+                }
+        
+                window.addEventListener('load', setupVideo, false);
+            })(window);
+        </script>
     </body>
 </html>
